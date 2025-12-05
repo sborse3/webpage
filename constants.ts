@@ -3,6 +3,7 @@ import { ResumeData } from './types';
 export const RESUME_DATA: ResumeData = {
   name: "Shubhankar Borse",
   role: "Staff AI Research Scientist",
+  avatarUrl: "./profile.jpeg",
   contact: {
     phone: "470 343 3652",
     email: "shubhankar8@gmail.com",
