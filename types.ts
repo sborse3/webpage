@@ -51,6 +51,7 @@ export interface SkillCategory {
 export interface ResumeData {
   name: string;
   role: string;
+  avatarUrl: string;
   contact: {
     phone: string;
     email: string;

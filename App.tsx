@@ -130,7 +130,7 @@ const App: React.FC = () => {
       <aside className="hidden md:flex flex-col w-72 fixed h-screen bg-white border-r border-slate-200 overflow-y-auto scrollbar-hide">
         <div className="p-8 pb-4">
             <div className="w-24 h-24 bg-slate-200 rounded-full mb-4 overflow-hidden shadow-inner">
-                 <img src="https://picsum.photos/200/200" alt="Shubhankar Borse" className="w-full h-full object-cover grayscale opacity-80" />
+                 <img src={RESUME_DATA.avatarUrl} alt={RESUME_DATA.name} className="w-full h-full object-cover" />
             </div>
             <h1 className="text-xl font-bold text-slate-900 leading-tight">{RESUME_DATA.name}</h1>
             <p className="text-accent font-medium text-sm mt-1">{RESUME_DATA.role}</p>
@@ -199,7 +199,7 @@ const App: React.FC = () => {
         {/* Intro / About (Hidden on Desktop Sidebar, visible here for structure on mobile) */}
         <div className="mb-12 md:hidden">
              <div className="w-20 h-20 bg-slate-200 rounded-full mb-4 overflow-hidden">
-                 <img src="https://picsum.photos/200/200" alt="Shubhankar Borse" className="w-full h-full object-cover grayscale" />
+                 <img src={RESUME_DATA.avatarUrl} alt={RESUME_DATA.name} className="w-full h-full object-cover" />
             </div>
             <p className="text-slate-600 leading-relaxed mb-6">
                 Staff AI Research Scientist specializing in Computer Vision, Generative AI, and efficient model deployment on edge devices.
