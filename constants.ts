@@ -80,16 +80,17 @@ export const RESUME_DATA: ResumeData = {
     {
       title: "Ar2Can: An Architect and an Artist Leveraging a Canvas for Multi-Human Generation",
       authors: "Shubhankar Borse, et al.",
-      venue: "Preprint",
-      year: "2025",
+      venue: "CVPR",
+      year: "2026",
+      link: "https://openaccess.thecvf.com/content/CVPR2026/papers/Borse_Ar2Can_An_Architect_and_an_Artist_Leveraging_a_Canvas_for_CVPR_2026_paper.pdf",
       category: "First Author"
     },
     {
-      title: "DisCo: Reinforcement with Diversity Constraints for Multi-Human Generation",
+      title: "DisCo: Resolving the Identity Crisis in Text-to-Image Generation",
       authors: "Shubhankar Borse, et al.",
-      venue: "Under review",
-      year: "2025",
-      status: "Under Review",
+      venue: "CVPR",
+      year: "2026",
+      link: "https://arxiv.org/abs/2510.01399",
       category: "First Author"
     },
     {
@@ -97,6 +98,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Shubhankar Borse, et al.",
       venue: "NeurIPS",
       year: "2025",
+      link: "https://proceedings.neurips.cc/paper_files/paper/2025/file/96bc329285d3f028dc5972d7146c7e2f-Paper-Datasets_and_Benchmarks_Track.pdf",
       category: "First Author"
     },
     {
