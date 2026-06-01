@@ -21,21 +21,21 @@ const CitationGraph: React.FC = () => {
             
             <div className="h-24 w-full flex items-end gap-1 px-1 border-b border-l border-slate-200">
                 {data.map((val, idx) => (
-                    <div key={idx} className="flex-1 flex flex-col justify-end group relative">
+                    <div key={idx} className="flex-1 relative group">
                         {/* Tooltip */}
                         <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-slate-800 text-white text-[10px] rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 pointer-events-none">
                             {years[idx]}: {val}
                         </div>
-                        <div 
+                        <div
                             className="bg-blue-200 hover:bg-accent transition-colors rounded-t-sm w-full"
-                            style={{ height: `${(val / maxVal) * 100}%` }}
+                            style={{ height: `${(val / maxVal) * 96}px` }}
                         ></div>
                     </div>
                 ))}
             </div>
             <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                <span>2020</span>
-                <span>2025</span>
+                <span>2021</span>
+                <span>2026</span>
             </div>
         </div>
     );
@@ -53,7 +53,11 @@ const PublicationGroup: React.FC<{ title: string; papers: Publication[] }> = ({ 
                 {papers.map((pub, idx) => (
                     <div key={idx} className="group p-4 rounded-lg hover:bg-white hover:shadow-sm border border-transparent hover:border-slate-200 transition-all bg-slate-50/50">
                         <h4 className="font-semibold text-slate-900 group-hover:text-accent transition-colors leading-snug mb-1">
-                            {pub.title}
+                            {pub.link ? (
+                                <a href={pub.link} target="_blank" rel="noreferrer" className="hover:underline">
+                                    {pub.title}
+                                </a>
+                            ) : pub.title}
                         </h4>
                         <p className="text-sm text-slate-500 mb-2">{pub.authors}</p>
                         <div className="flex flex-wrap gap-2 items-center text-xs">

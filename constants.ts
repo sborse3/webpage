@@ -112,6 +112,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Shubhankar Borse et al.",
       venue: "NeurIPS",
       year: "2024",
+      link: "https://proceedings.neurips.cc/paper_files/paper/2024/hash/83960718b4d12f799985206f1b1cf00f-Abstract-Conference.html",
       category: "First Author"
     },
     {
@@ -119,6 +120,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Shubhankar Borse, et al.",
       venue: "CVPR",
       year: "2023",
+      link: "https://openaccess.thecvf.com/content/CVPR2023/papers/Borse_DejaVu_Conditional_Regenerative_Learning_To_Enhance_Dense_Prediction_CVPR_2023_paper.pdf",
       category: "First Author"
     },
     {
@@ -126,6 +128,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Shubhankar Borse*, Marvin Klingner*, Varun Ravi* et al.",
       venue: "CVPR",
       year: "2023",
+      link: "https://openaccess.thecvf.com/content/CVPR2023/papers/Klingner_X3KD_Knowledge_Distillation_Across_Modalities_Tasks_and_Stages_for_Multi-Camera_CVPR_2023_paper.pdf",
       category: "First Author"
     },
     {
@@ -133,6 +136,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Borse, Shubhankar, et al.",
       venue: "WACV",
       year: "2023",
+      link: "https://openaccess.thecvf.com/content/WACV2023/papers/Borse_X-Align_Cross-Modal_Cross-View_Alignment_for_Birds-Eye-View_Segmentation_WACV_2023_paper.pdf",
       category: "First Author"
     },
     {
@@ -147,6 +151,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Shubhankar Borse, et al.",
       venue: "CVPR",
       year: "2022",
+      link: "https://openaccess.thecvf.com/content/CVPR2022/papers/Borse_Panoptic_Instance_and_Semantic_Relations_A_Relational_Context_Encoder_To_CVPR_2022_paper.pdf",
       category: "First Author"
     },
     {
@@ -154,6 +159,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Shubhankar Borse, Herbert Cai, Yizhe Zhang, Fatih Porikli",
       venue: "BMVC",
       year: "2021",
+      link: "https://arxiv.org/abs/2111.02333",
       category: "First Author"
     },
     {
@@ -161,6 +167,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Borse, Shubhankar, et al.",
       venue: "CVPR (Oral)",
       year: "2021",
+      link: "https://openaccess.thecvf.com/content/CVPR2021/papers/Borse_InverseForm_A_Loss_Function_for_Structured_Boundary-Aware_Segmentation_CVPR_2021_paper.pdf",
       category: "First Author"
     },
     {
@@ -168,6 +175,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "S. Borse and P. K. Bora",
       venue: "IEMCON",
       year: "2016",
+      link: "https://ieeexplore.ieee.org/abstract/document/7746258/",
       category: "First Author"
     },
 
@@ -198,6 +206,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Farhadzadeh, F., Das, D., Borse, S. and Porikli, F.",
       venue: "ICLR",
       year: "2025",
+      link: "https://arxiv.org/abs/2501.16559",
       category: "Co-Author"
     },
     {
@@ -205,6 +214,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Bhardwaj, K., Pandey, N.P., Priyadarshi, S., Ganapathy, V., Esteves, R., Kadambi, S., Borse, S., et al.",
       venue: "NeurIPS",
       year: "2024",
+      link: "https://arxiv.org/abs/2407.16712",
       category: "Co-Author"
     },
     {
@@ -213,6 +223,7 @@ export const RESUME_DATA: ResumeData = {
       venue: "Under review",
       year: "2024",
       status: "Under Review",
+      link: "https://arxiv.org/abs/2403.09620",
       category: "Co-Author"
     },
     {
@@ -227,6 +238,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Zhang, K., Fu, Y., Borse, S., Cai, H., Porikli, F., & Wang, X.",
       venue: "ICLR",
       year: "2023",
+      link: "https://arxiv.org/abs/2210.07199",
       category: "Co-Author"
     },
     {
@@ -234,6 +246,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Hu, H., Chen, Y., Xu, J., Borse, S., Cai, H., Porikli, F., & Wang, X.",
       venue: "ECCV",
       year: "2022",
+      link: "https://arxiv.org/abs/2206.08655",
       category: "Co-Author"
     },
     {
@@ -241,6 +254,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Y. Zhang, S. Borse, H. Cai, F. Porikli",
       venue: "WACV",
       year: "2022",
+      link: "https://openaccess.thecvf.com/content/WACV2022/papers/Zhang_AuxAdapt_Stable_and_Efficient_Test-Time_Adaptation_for_Temporally_Consistent_Video_WACV_2022_paper.pdf",
       category: "Co-Author"
     },
     {
@@ -248,6 +262,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Y. Zhang, S. Borse*, H. Cai*, F. Porikli",
       venue: "WACV",
       year: "2022",
+      link: "https://openaccess.thecvf.com/content/WACV2022/papers/Zhang_Perceptual_Consistency_in_Video_Segmentation_WACV_2022_paper.pdf",
       category: "Co-Author"
     },
     {
@@ -255,6 +270,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Mehta, D., Skliar, A., Ben Yahia, H., Borse, S., Porikli, F., Habibian, A., & Blankevoort, T.",
       venue: "CVPRW",
       year: "2022",
+      link: "https://openaccess.thecvf.com/content/CVPR2022W/ECV/papers/Mehta_Simple_and_Efficient_Architectures_for_Semantic_Segmentation_CVPRW_2022_paper.pdf",
       category: "Co-Author"
     },
     {
@@ -262,6 +278,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Park, H., Yessenbayev, A., Singhal, T., Adhikari, N.K., Zhang, Y., Borse, S.M., et al.",
       venue: "CVPRD",
       year: "2022",
+      link: "https://openaccess.thecvf.com/content/CVPR2022/papers/Park_Real-Time_Accurate_and_Consistent_Video_Semantic_Segmentation_via_Unsupervised_Adaptation_CVPR_2022_paper.pdf",
       category: "Co-Author"
     },
     {
@@ -269,6 +286,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Herbert Cai, Janarbek Matai*, Shubhankar Borse*, Yizhe Zhang, Amin Ansari, Fatih Porikli",
       venue: "BMVC",
       year: "2021",
+      link: "https://arxiv.org/abs/2110.12516",
       category: "Co-Author"
     },
     
@@ -278,6 +296,7 @@ export const RESUME_DATA: ResumeData = {
       authors: "Unger, David, Nikhil Gosala, Varun Ravi Kumar, Shubhankar Borse, Abhinav Valada, and Senthil Yogamani",
       venue: "Computer Vision: Challenges, Trends, and Opportunities",
       year: "2023",
+      link: "https://arxiv.org/abs/2309.09080",
       category: "Book Chapter"
     }
   ],
