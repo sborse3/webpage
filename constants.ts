@@ -33,6 +33,8 @@ export const RESUME_DATA: ResumeData = {
       location: "San Diego",
       period: "November 2023 – Current",
       achievements: [
+        "Leading research and commercialization efforts for Qualcomm’s Vision Token Compression in multimodal models, demonstrated on Snapdragon Phones.",
+        "Leading research efforts in applying Reinforcement Learning to Video Generation models.",
         "Lead the research efforts on Multi-Concept Personalized Image Generation and PEFT methods using Unified Multi-Modal models.",
         "Drove the implementation of Qualcomm’s zero-shot personalization running on smartphones.",
         "Drove the implementation of Qualcomm’s custom Low-Rank Adapters (LoRA) for Generative models running on smartphones.",
