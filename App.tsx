@@ -7,10 +7,10 @@ import { Publication } from './types';
 // Citation Graph Component with accurate data
 const CitationGraph: React.FC = () => {
     // Data matched to citations per year from Google Scholar
-    const data = [9, 44, 174, 237, 279, 114];
-    const years = ['2021', '2022', '2023', '2024', '2025', '2026'];
+    const data = [];
+    const years = [];
     const maxVal = Math.max(...data);
-    const totalCitations = 865;
+    const totalCitations = 889;
     
     return (
         <div className="mt-6 mb-2 w-full">
