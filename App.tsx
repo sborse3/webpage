@@ -10,7 +10,7 @@ const CitationGraph: React.FC = () => {
     const data = [];
     const years = [];
     const maxVal = Math.max(...data);
-    const totalCitations = 903;
+    const totalCitations = 923;
     
     return (
         <div className="mt-6 mb-2 w-full">
