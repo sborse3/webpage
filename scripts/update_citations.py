@@ -20,7 +20,7 @@ def fetch_citation_data():
 
     print(f"Fetching Scholar profile for {SCHOLAR_ID} ...")
     author = scholarly.search_author_id(SCHOLAR_ID)
-    author = scholarly.fill(author, sections=["basics", "citations"])
+    author = scholarly.fill(author, sections=["basics", "citations", "counts"])
 
     total = author.get("citedby", 0)
     cites_per_year: dict = author.get("cites_per_year", {})
