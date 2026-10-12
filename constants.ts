@@ -370,6 +370,12 @@ export const RESUME_DATA: ResumeData = {
   ],
   recognition: [
     {
+      title: "Top Reviewer",
+      issuer: "NeurIPS 2026",
+      year: "2026",
+      description: "Recognized as a Top Reviewer for NeurIPS 2026"
+    },
+    {
       title: "Qualcomm Distinguished Invention Award",
       issuer: "Qualcomm",
       year: "2025",
