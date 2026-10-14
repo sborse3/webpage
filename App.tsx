@@ -4,7 +4,7 @@ import Section from './components/Section';
 import { Icons } from './components/Icon';
 import { Publication } from './types';
 
-// Citation Graph Component with accurate data
+// Citation snapshot; the profile link provides the live count.
 const CitationGraph: React.FC = () => {
     // Data matched to citations per year from Google Scholar
     const data = [10, 45, 173, 231, 267, 238];
@@ -34,9 +34,10 @@ const CitationGraph: React.FC = () => {
                 ))}
             </div>
             <div className="flex justify-between text-[10px] text-slate-400 mt-1">
-                <span>2021</span>
-                <span>2026</span>
+                <span>{years[0]}</span>
+                <span>{years[years.length - 1]}</span>
             </div>
+            <a href={RESUME_DATA.contact.scholar} target="_blank" rel="noreferrer" className="mt-2 block text-xs text-slate-500 hover:text-accent">View live Google Scholar profile ↗</a>
         </div>
     );
 };
@@ -59,7 +60,8 @@ const PublicationGroup: React.FC<{ title: string; papers: Publication[] }> = ({ 
                                 </a>
                             ) : pub.title}
                         </h4>
-                        <p className="text-sm text-slate-500 mb-2">{pub.authors}</p>
+                        <p className="text-sm text-slate-500 mb-2">{pub.authors.split(/(Shubhankar Borse\*?)/g).map((part, i) => part.startsWith('Shubhankar Borse') ? <strong key={i} className="font-semibold text-slate-700">{part}</strong> : part)}</p>
+                        {pub.summary && <p className="text-sm text-slate-600 mb-3">{pub.summary}</p>}
                         <div className="flex flex-wrap gap-2 items-center text-xs">
                             <span className={`px-2 py-0.5 rounded font-medium ${
                                 pub.venue.includes('CVPR') || pub.venue.includes('NeurIPS') || pub.venue.includes('ICCV') || pub.venue.includes('ICLR') || pub.venue.includes('ICML')
@@ -73,6 +75,7 @@ const PublicationGroup: React.FC<{ title: string; papers: Publication[] }> = ({ 
                             {pub.status && (
                                 <span className="text-amber-600 bg-amber-50 px-2 py-0.5 rounded border border-amber-100">{pub.status}</span>
                             )}
+                            <a href={pub.scholarLink} target="_blank" rel="noreferrer" aria-label={`Google Scholar: ${pub.title}`} className="font-medium text-accent hover:underline">Google Scholar ↗</a>
                         </div>
                     </div>
                 ))}
@@ -116,16 +119,24 @@ const App: React.FC = () => {
 
   const navItems = [
     { id: 'experience', label: 'Experience', icon: 'Briefcase' },
-    { id: 'education', label: 'Education', icon: 'GraduationCap' },
     { id: 'publications', label: 'Publications', icon: 'BookOpen' },
+    { id: 'education', label: 'Education', icon: 'GraduationCap' },
     { id: 'skills', label: 'Skills', icon: 'Code' },
     { id: 'patents', label: 'Patents', icon: 'Lightbulb' },
+    { id: 'service', label: 'Academic Service', icon: 'User' },
     { id: 'awards', label: 'Awards', icon: 'Award' },
   ];
 
   // Group publications
-  const firstAuthored = RESUME_DATA.publications.filter(p => p.category === 'First Author');
-  const nonFirstAuthored = RESUME_DATA.publications.filter(p => p.category !== 'First Author');
+  const firstAuthored = RESUME_DATA.publications.filter(p => p.category === 'First Author' || p.category === 'Co-First Author');
+  const collaborative = RESUME_DATA.publications.filter(p => p.category === 'Co-Author');
+  const chapters = RESUME_DATA.publications.filter(p => p.category === 'Book Chapter');
+  const employers = [...new Set(RESUME_DATA.experience.map(job => job.company))].map(company => {
+    const jobs = RESUME_DATA.experience.filter(job => job.company === company);
+    const period = jobs.length === 1 ? jobs[0].period : `${jobs[jobs.length - 1].period.split(' – ')[0]} – ${jobs[0].period.split(' – ')[1]}`;
+    return { company, location: jobs[0].location, period, jobs };
+  });
+  const [showAllPatents, setShowAllPatents] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row font-sans text-slate-600">
@@ -138,6 +149,7 @@ const App: React.FC = () => {
             </div>
             <h1 className="text-xl font-bold text-slate-900 leading-tight">{RESUME_DATA.name}</h1>
             <p className="text-accent font-medium text-sm mt-1">{RESUME_DATA.role}</p>
+            <a href="./Shubhankar_Borse_Resume.pdf" className="mt-5 inline-flex items-center gap-2 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent"><Icons.FileText size={16} />Download résumé</a>
             
             <CitationGraph />
         </div>
@@ -176,7 +188,7 @@ const App: React.FC = () => {
                     <Icons.Linkedin size={16} />
                     <span>LinkedIn</span>
                 </a>
-                 <a href="https://scholar.google.com/citations?user=ZsgWCyMAAAAJ&hl=en" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-500 hover:text-accent transition-colors">
+                 <a href={RESUME_DATA.contact.scholar} target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-500 hover:text-accent transition-colors">
                     <Icons.FileText size={16} />
                     <span>Google Scholar</span>
                 </a>
@@ -191,7 +203,8 @@ const App: React.FC = () => {
             <p className="text-xs text-accent">{RESUME_DATA.role}</p>
          </div>
          <div className="flex gap-2">
-             <a href={`mailto:${RESUME_DATA.contact.email}`} className="p-2 bg-slate-100 rounded-full text-slate-600">
+             <a href="./Shubhankar_Borse_Resume.pdf" aria-label="Download résumé PDF" className="p-2 bg-slate-900 rounded-full text-white"><Icons.FileText size={18} /></a>
+             <a href={`mailto:${RESUME_DATA.contact.email}`} aria-label="Email Shubhankar Borse" className="p-2 bg-slate-100 rounded-full text-slate-600">
                  <Icons.Mail size={18} />
              </a>
          </div>
@@ -200,41 +213,60 @@ const App: React.FC = () => {
       {/* Main Content */}
       <main className="flex-1 md:ml-72 p-6 md:p-12 lg:p-16 max-w-5xl mx-auto">
         
-        {/* Intro / About (Hidden on Desktop Sidebar, visible here for structure on mobile) */}
-        <div className="mb-12 md:hidden">
-             <div className="w-20 h-20 bg-slate-200 rounded-full mb-4 overflow-hidden">
-                 <img src={RESUME_DATA.avatarUrl} alt={RESUME_DATA.name} className="w-full h-full object-cover" />
+        <header className="mb-4 border-b border-slate-200 pb-10">
+            <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">{RESUME_DATA.experience[0].company} · {RESUME_DATA.experience[0].location}</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-5">Generative research.<br />Multimodal intelligence.<br />On-device impact.</h2>
+            <p className="text-slate-600 leading-relaxed max-w-2xl">{RESUME_DATA.summary}</p>
+            <div className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-5">
+                {[[RESUME_DATA.portfolio.papers, 'Publications'], [RESUME_DATA.portfolio.citations, 'Citations'], [RESUME_DATA.portfolio.filings, 'Patent filings'], [RESUME_DATA.portfolio.grants, 'Granted patents']].map(([value, label]) => (
+                    <div key={label} className="border-l-2 border-blue-200 pl-3 sm:pl-5"><p className="text-2xl sm:text-3xl font-bold text-slate-900">{value}</p><p className="mt-1 text-xs sm:text-sm text-slate-500">{label}</p></div>
+                ))}
             </div>
-            <p className="text-slate-600 leading-relaxed mb-6">
-                Staff AI Research Scientist specializing in Computer Vision, Generative AI, and efficient model deployment on edge devices.
-            </p>
-            
-            {/* Added CitationGraph for Mobile */}
-            <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
-                <CitationGraph />
+            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3 text-sm font-medium text-accent">
+                <a href="./Shubhankar_Borse_Resume.pdf" className="hover:underline">Résumé PDF ↗</a>
+                <a href={RESUME_DATA.contact.scholar} target="_blank" rel="noreferrer" className="hover:underline">Google Scholar ↗</a>
+                <a href={`https://linkedin.com/in/${RESUME_DATA.contact.linkedin}`} target="_blank" rel="noreferrer" className="hover:underline">LinkedIn ↗</a>
             </div>
-        </div>
+        </header>
 
         <Section id="experience" title="Experience" icon="Briefcase">
             <div className="space-y-12">
-                {RESUME_DATA.experience.map((job, idx) => (
-                    <div key={idx} className="relative pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-accent before:rounded-full before:ring-4 before:ring-blue-50 border-l-2 border-slate-100 pb-2 last:border-0">
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
-                            <h3 className="text-lg font-bold text-slate-900">{job.role}</h3>
-                            <span className="text-sm font-medium text-slate-400 bg-slate-50 px-2 py-1 rounded">{job.period}</span>
+                {employers.map((employer, employerIdx) => (
+                    <article key={employer.company} aria-labelledby={`employer-${employerIdx}`}>
+                        <div className="mb-6 border-b border-slate-200 pb-4">
+                            <h3 id={`employer-${employerIdx}`} className="text-xl font-bold text-slate-900">{employer.company}</h3>
+                            <p className="mt-1 text-sm text-slate-500">{employer.location} · {employer.period}</p>
+                            {employer.jobs.length > 1 && <p className="mt-3 text-sm leading-relaxed text-slate-600">Project ownership → cross-domain research → research direction & commercialization</p>}
                         </div>
-                        <div className="text-accent font-medium mb-4">{job.company}, {job.location}</div>
-                        <ul className="space-y-2">
-                            {job.achievements.map((achievement, aIdx) => (
-                                <li key={aIdx} className="text-slate-600 leading-relaxed text-sm relative pl-4">
-                                    <span className="absolute left-0 top-2 w-1 h-1 bg-slate-300 rounded-full"></span>
-                                    {achievement}
-                                </li>
+                        <div className="space-y-8">
+                            {employer.jobs.map(job => (
+                                <div key={job.role} className="relative pl-6 sm:pl-8 before:absolute before:left-0 before:top-2 before:w-2 before:h-2 before:bg-accent before:rounded-full before:ring-4 before:ring-blue-50 border-l-2 border-slate-200 pb-2 last:border-0">
+                                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline mb-2">
+                                        <h4 className="text-lg font-bold text-slate-900">{job.role}</h4>
+                                        <span className="text-xs font-medium text-slate-500 whitespace-nowrap sm:ml-3">{job.period}</span>
+                                    </div>
+                                    <p className="mb-4 text-xs font-semibold uppercase tracking-wider text-accent">{job.scope}</p>
+                                    <ul className="space-y-2">
+                                        {job.achievements.map(achievement => (
+                                            <li key={achievement} className="text-slate-600 leading-relaxed text-sm relative pl-4">
+                                                <span className="absolute left-0 top-2 w-1 h-1 bg-slate-300 rounded-full"></span>
+                                                {achievement}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             ))}
-                        </ul>
-                    </div>
+                        </div>
+                    </article>
                 ))}
             </div>
+        </Section>
+
+        <Section id="publications" title="Selected Publications" icon="BookOpen">
+            <p className="mb-6 text-sm text-slate-500">* Equal contribution. Preprints are labeled separately from conference and journal publications. <a href={RESUME_DATA.contact.scholar} target="_blank" rel="noreferrer" className="text-accent hover:underline">Full Google Scholar profile ↗</a></p>
+            <PublicationGroup title="First & Co-First Author Papers" papers={firstAuthored} />
+            <PublicationGroup title="Collaborative Research" papers={collaborative} />
+            <PublicationGroup title="Book Chapters" papers={chapters} />
         </Section>
 
         <Section id="education" title="Education" icon="GraduationCap">
@@ -261,11 +293,6 @@ const App: React.FC = () => {
             </div>
         </Section>
 
-        <Section id="publications" title="Selected Publications" icon="BookOpen">
-            <PublicationGroup title="First-Authored Papers" papers={firstAuthored} />
-            <PublicationGroup title="Non-First Author Papers" papers={nonFirstAuthored} />
-        </Section>
-
         <Section id="skills" title="Technical Skills" icon="Code">
              <div className="grid sm:grid-cols-2 gap-6">
                 {RESUME_DATA.skills.map((category, idx) => (
@@ -285,15 +312,17 @@ const App: React.FC = () => {
         </Section>
 
         <Section id="patents" title="Patents" icon="Lightbulb">
+            <p className="mb-3 text-lg font-semibold text-slate-900">{RESUME_DATA.portfolio.filings} filings · {RESUME_DATA.portfolio.grants} granted patents</p>
+            <p className="mb-5 text-sm leading-relaxed text-slate-600">An invention portfolio spanning generative AI, personalization, efficient model adaptation, multimodal perception, and on-device inference. Selected public filings and grants appear below.</p>
             <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
                 <div className="p-4 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
                     <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Title</span>
                     <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Status</span>
                 </div>
                 <div className="divide-y divide-slate-100">
-                    {RESUME_DATA.patents.slice(0, 8).map((patent, idx) => (
+                    {(showAllPatents ? RESUME_DATA.patents : RESUME_DATA.patents.slice(0, 8)).map((patent, idx) => (
                         <div key={idx} className="p-4 flex justify-between items-start gap-4 hover:bg-slate-50 transition-colors">
-                            <p className="text-sm font-medium text-slate-700">{patent.title}</p>
+                            <p className="text-sm font-medium text-slate-700">{patent.link ? <a href={patent.link} target="_blank" rel="noreferrer" className="hover:text-accent hover:underline">{patent.title}</a> : patent.title}</p>
                             <span className={`text-xs px-2 py-1 rounded font-medium whitespace-nowrap ${
                                 patent.status === 'Granted' 
                                 ? 'bg-green-100 text-green-700' 
@@ -304,12 +333,19 @@ const App: React.FC = () => {
                         </div>
                     ))}
                     {RESUME_DATA.patents.length > 8 && (
-                        <div className="p-3 text-center text-xs text-slate-400 italic">
-                            + {RESUME_DATA.patents.length - 8} more patents filed/granted
-                        </div>
+                        <button type="button" aria-expanded={showAllPatents} onClick={() => setShowAllPatents(!showAllPatents)} className="w-full p-4 text-center text-sm font-medium text-accent hover:bg-blue-50">{showAllPatents ? 'Show fewer patents' : `View all ${RESUME_DATA.patents.length} selected public filings and grants`}</button>
                     )}
                 </div>
             </div>
+            <a href={RESUME_DATA.portfolio.patentUrl} target="_blank" rel="noreferrer" className="mt-4 inline-block text-sm text-accent hover:underline">Browse public records on Google Patents ↗</a>
+        </Section>
+
+        <Section id="service" title="Reviewing & Academic Service" icon="User">
+            <p className="mb-5 text-sm text-slate-600">Conference reviewing, committee service, and journal peer review across computer vision and machine learning.</p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                {RESUME_DATA.reviewing.map(item => <div key={item.organization} className="bg-white border border-slate-200 rounded-lg p-4"><div className="flex justify-between gap-3"><h3 className="font-semibold text-slate-900">{item.organization}</h3><span className="text-sm text-slate-500">{item.period}</span></div><p className="mt-1 text-sm text-slate-500">{item.role}</p></div>)}
+            </div>
+            <ul className="space-y-3 text-sm leading-relaxed text-slate-600">{RESUME_DATA.academicActivities.map(activity => <li key={activity}>{activity}</li>)}</ul>
         </Section>
 
         <Section id="awards" title="Awards & Recognition" icon="Award">
@@ -328,7 +364,7 @@ const App: React.FC = () => {
         </Section>
 
          {/* Projects Section - Optional if space permits, or merged */}
-         <Section id="projects" title="Key Projects" icon="Cpu">
+         <Section id="projects" title="Earlier Research Projects" icon="Cpu">
             <div className="space-y-6">
                 {RESUME_DATA.projects.map((proj, idx) => (
                      <div key={idx}>

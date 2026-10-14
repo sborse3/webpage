@@ -12,21 +12,27 @@ export interface Experience {
   location: string;
   period: string;
   achievements: string[];
+  scope: string;
+  level?: string;
 }
 
 export interface Publication {
+  id: string;
   title: string;
   authors: string;
   venue: string;
   year: string;
   status?: string;
   link?: string;
-  category: 'First Author' | 'Co-Author' | 'Book Chapter';
+  scholarLink: string;
+  category: 'First Author' | 'Co-First Author' | 'Co-Author' | 'Book Chapter';
+  summary?: string;
 }
 
 export interface Patent {
   title: string;
   status: 'Filed' | 'Granted';
+  link?: string;
 }
 
 export interface Project {
@@ -51,12 +57,23 @@ export interface SkillCategory {
 export interface ResumeData {
   name: string;
   role: string;
+  summary: string;
+  researchFocus: string;
+  portfolio: {
+    papers: string;
+    citations: string;
+    filings: string;
+    grants: string;
+    updated: string;
+    patentUrl: string;
+  };
   avatarUrl: string;
   contact: {
     phone: string;
     email: string;
     linkedin: string;
     scholar: string;
+    website: string;
   };
   education: Education[];
   experience: Experience[];
@@ -66,4 +83,5 @@ export interface ResumeData {
   recognition: Recognition[];
   skills: SkillCategory[];
   academicActivities: string[];
+  reviewing: { role: string; organization: string; period: string }[];
 }
