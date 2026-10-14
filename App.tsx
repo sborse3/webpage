@@ -215,7 +215,6 @@ const App: React.FC = () => {
         
         <header className="mb-4 border-b border-slate-200 pb-10">
             <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">{RESUME_DATA.experience[0].company} · {RESUME_DATA.experience[0].location}</p>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight mb-5">Generative research.<br />Multimodal intelligence.<br />On-device impact.</h2>
             <p className="text-slate-600 leading-relaxed max-w-2xl">{RESUME_DATA.summary}</p>
             <div className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-5">
                 {[[RESUME_DATA.portfolio.papers, 'Publications'], [RESUME_DATA.portfolio.citations, 'Citations'], [RESUME_DATA.portfolio.filings, 'Patent filings'], [RESUME_DATA.portfolio.grants, 'Granted patents']].map(([value, label]) => (

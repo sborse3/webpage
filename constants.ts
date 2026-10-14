@@ -38,7 +38,7 @@ export const RESUME_DATA: ResumeData = {
       "location": "Santa Clara",
       "period": "Nov 2023 – Present",
       "achievements": [
-        "Headed the vision-token compression project for multimodal models, directing research and commercialization efforts across multiple teams, with demonstrations on Snapdragon phones.",
+        "Headed the vision-token compression project for multimodal models, leading research and commercialization efforts across multiple teams, with demonstrations on Snapdragon phones.",
         "Directed a year-long, cross-functional research initiative in multi-concept personalization using Reinforcement Learning, resulting in papers at NeurIPS 2025, CVPR 2026 and a live demo at NeurIPS 2025.",
         "Mentored research teams working on physically grounded video generation, motion-aware video retrieval, and relighting with video diffusion.",
         "Lead research on parameter-efficient finetuning and drove commercial efforts for zero-shot personalization and LoRA adapters."
