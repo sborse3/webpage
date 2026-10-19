@@ -7,10 +7,10 @@ import { Publication } from './types';
 // Citation snapshot; the profile link provides the live count.
 const CitationGraph: React.FC = () => {
     // Data matched to citations per year from Google Scholar
-    const data = [10, 45, 173, 231, 267, 238];
+    const data = [10, 45, 173, 228, 264, 255];
     const years = ['2021', '2022', '2023', '2024', '2025', '2026'];
     const maxVal = Math.max(...data);
-    const totalCitations = 976;
+    const totalCitations = 987;
     
     return (
         <div className="mt-6 mb-2 w-full">
